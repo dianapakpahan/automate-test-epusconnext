@@ -1,0 +1,14 @@
+node_modules/
+allure-results/
+allure-report/
+reports/
+*.log
+.env
+.DS_Store
+dist/
+build/
+junit/
+.idea/
+.vscode/
+package-lock.json
+yarn.lock
