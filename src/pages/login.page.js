@@ -53,6 +53,9 @@ class LoginPage {
     // ======================
 
     async login(phone,pin){
+        await this.halamanLogin.waitForDisplayed({
+            timeout: 10000
+        });
         await this.inputNoHp(phone);
         await this.inputPin(pin);
         await this.clickMasuk();

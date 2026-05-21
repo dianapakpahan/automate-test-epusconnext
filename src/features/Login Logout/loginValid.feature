@@ -4,7 +4,7 @@
 Feature: Login ePus Connext
 
   @valid-login
-  Scenario Outline: Login menggunakan credential valid
+  Scenario: Login menggunakan credential valid
 
     Given User sudah dihalaman login di ePus Connext
 

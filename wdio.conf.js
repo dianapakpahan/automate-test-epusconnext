@@ -54,7 +54,7 @@ export const config = {
     capabilities: [{
 
     platformName: 'Android',
-    'appium:deviceName': 'R9RY700HBHN',
+    'appium:deviceName': 'emulator-5554',
     'appium:automationName': 'UiAutomator2',
     'appium:appPackage': 'com.infokes.eposyandu',
     'appium:appActivity': 'com.infokes.eposyandu.MainActivity',

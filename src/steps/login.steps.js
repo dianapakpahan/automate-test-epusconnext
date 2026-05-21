@@ -1,6 +1,5 @@
 import { Given, When, Then } from '@wdio/cucumber-framework';
 import LoginPage from '../pages/login.page.js';
-import loginPage from '../pages/login.page.js';
 import { invalidUsers, validUser } from '../data/login.data.js';
 
 console.log('LOGIN STEPS LOADED');
@@ -15,6 +14,13 @@ When(/^User login menggunakan credentials valid$/, async () => {
     await LoginPage.login(validUser.phone, validUser.pin);
 });
 
+When(/^User memasukkan Nomor HP "([^"]*)" dan PIN "([^"]*)"$/, async (phone, pin) => {
+    await LoginPage.login(phone, pin);
+});
+
+When(/^User klik tombol masuk$/, async () => {
+    await LoginPage.clickMasuk();
+});
 
 When(/^User klik tombol masuk$/, async () => {
 
@@ -35,8 +41,5 @@ Then(/^Menampilkan halaman utama ePus Connext$/, async () => {
 });
 
 Then(/^Menampilkan error login "([^"]*)"$/, async (errorMessage) => {
-
-    await expect(LoginPage.errorLoginMessage)
-        .toBeDisplayed();
-
+    await expect(LoginPage.errorLoginMessage).toHaveText(errorMessage);
 });

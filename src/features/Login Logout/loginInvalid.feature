@@ -8,8 +8,7 @@ Feature: Login ePus Connext
 
     Given User sudah dihalaman login di ePus Connext
 
-    When User memasukkan Nomor HP "<phone>"
-    And User memasukkan PIN "<pin>"
+    When User memasukkan Nomor HP "<phone>" dan PIN "<pin>"
     And User klik tombol masuk
 
     Then Menampilkan error login "<errorMessage>"
