@@ -2,9 +2,14 @@
   "name": "automate-test-epusconnext",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "wdio": "wdio run ./wdio.conf.js"
+    "wdio": "wdio run ./wdio.conf.js",
+    "smoke": "wdio run wdio.conf.js --cucumberOpts.tagExpression='@smoke'",
+    "positive": "wdio run wdio.conf.js --cucumberOpts.tagExpression='@positive'",
+    "negative": "wdio run wdio.conf.js --cucumberOpts.tagExpression='@negativeLogin'",
+    "regression": "wdio run wdio.conf.js --cucumberOpts.tagExpression='@regression'"
   },
   "keywords": [],
   "author": "",
