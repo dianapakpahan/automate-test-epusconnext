@@ -1,65 +1,176 @@
-## Folder Structure
 # EPUS Connext Mobile Automation
 
+Automation Testing Mobile menggunakan **WebdriverIO**, **Appium**, dan **Cucumber (BDD)** untuk aplikasi **EPUS Connext**.
+
+---
+
+# Tech Stack
+
+- WebdriverIO
+- Appium
+- Cucumber (BDD)
+- JavaScript
+- Node.js
+
+---
+
+# Folder Structure
+
+```
 automate-test-epusconnext/
 ├── src/
-│   ├── features/
-│       ├── login/
-│       
-│       
-│                 # File .feature (Gherkin)
-│   ├── pages/             # Page Object Model (POM)
-│   ├── steps/             # Step Definitions
-│   ├── support/           # Hooks, Utils, dan Custom Commands
-│   └── data/              # Test Data (JSON/CSV)
-├── config/                # Environment configurations
-├── reports/               # Test reports (Generated)
-├── .github/               # CI/CD Workflows
-├── wdio.conf.js           # Konfigurasi Utama WDIO
+│   ├── data/                  # Test Data
+│   ├── features/              # Gherkin Feature Files
+│   ├── helper/                # Helper Functions
+│   ├── pages/                 # Page Object Model
+│   ├── steps/                 # Step Definitions
+│   ├── support/               # Hooks & Utilities
+│   └── temp/
+│
+├── screenshots/               # Failed Screenshot
+├── allure-results/            # Allure Result
+├── wdio.conf.js               # WebdriverIO Configuration
 ├── package.json
 └── README.md
-
-Project menggunakan struktur **Simplified Source Layout**:
-
-- `src/features/`: Skenario bisnis dalam format Gherkin (`.feature`).
-- `src/pages/`: Implementasi Page Object Model (POM).
-- `src/steps/`: Implementasi Step Definitions.
-- `src/support/`: Hooks (@Before/@After) dan Utility functions.
-- `src/data/`: Test data set (JSON).
-- `config/`: Konfigurasi environment.
-- `reports/`: Hasil eksekusi test
-
-
-# EPUS Connext Mobile Automation
-
-
-Project ini menggunakan Appium dengan **WebdriverIO (JavaScript)** dan Cucumber (BDD).
-
-## Struktur Project
-
-Project menggunakan struktur **Simplified Source Layout**:
-
-- `src/features/`: Skenario bisnis (Gherkin).
-- `src/pages/`: Page Object Model.
-- `src/steps/`: Step Definitions.
-- `src/support/`: Hooks dan Utilities.
-- `src/data/`: Test data.
-
-## Cara Menjalankan Test
-
-1. Pastikan Appium Server sudah berjalan.
-2. Pastikan Emulator/Device sudah terhubung.
-3. Install dependencies: `npm install`
-4. Jalankan test:
-
-```bash
-npm run wdio
 ```
 
-## Reporting
-Setelah eksekusi selesai, laporan dapat dilihat di folder `/reports`.
+---
 
-## Kontribusi
-1. Gunakan format Page Object Model.
-2. Pastikan file `.feature` menggunakan bahasa yang mudah dimengerti (Gherkin).
-3. Jangan commit file `.apk` atau `log` ke repository.
+# Prerequisites
+
+Pastikan sudah menginstall:
+
+- Node.js
+- Java JDK
+- Android Studio
+- Android SDK
+- Appium
+- Appium Inspector
+- Git
+
+---
+
+# Clone Repository
+
+```bash
+git clone https://github.com/dianapakpahan/automate-test-epusconnext.git
+```
+
+Masuk ke project
+
+```bash
+cd automate-test-epusconnext
+```
+
+---
+
+# Install Dependency
+
+```bash
+npm install
+```
+
+---
+
+# Menjalankan Automation
+
+Pastikan:
+
+- Appium Server sudah berjalan
+- Emulator atau Android Device sudah terkoneksi
+
+Cek device
+
+```bash
+adb devices
+```
+
+### Login
+
+```bash
+npm run login
+```
+
+### Tambah Sasaran Posyandu
+
+```bash
+npm run tambahSasaranPosyandu
+```
+
+### Pemeriksaan Ibu Hamil
+
+```bash
+npm run pemeriksaanPosyandu
+```
+
+### Ubah PIN
+
+```bash
+npm run ubahPin
+```
+
+---
+
+# Git Workflow
+
+Melihat perubahan
+
+```bash
+git status
+```
+
+Menambahkan perubahan
+
+```bash
+git add .
+```
+
+Commit
+
+```bash
+git commit -m "feat: update pemeriksaan ibu hamil"
+```
+
+Push ke GitHub
+
+```bash
+git push
+```
+
+Mengambil update terbaru
+
+```bash
+git pull
+```
+
+---
+
+# Report
+
+Generate Allure Report
+
+```bash
+allure generate allure-results --clean -o allure-report
+```
+
+Membuka report
+
+```bash
+allure open allure-report
+```
+
+---
+
+# Best Practices
+
+- Gunakan Page Object Model (POM)
+- Gunakan Step Definition yang reusable
+- Gunakan data test dari folder `src/data`
+- Jangan commit file `.apk`, `node_modules`, ataupun file log
+- Gunakan format commit yang konsisten (`feat`, `fix`, `refactor`, `test`, `docs`)
+
+---
+
+# Author
+
+**Diana Pakpahan**
