@@ -8,8 +8,10 @@
     "wdio": "wdio run ./wdio.conf.js",
     "smoke": "wdio run wdio.conf.js --cucumberOpts.tagExpression='@smoke'",
     "positive": "wdio run wdio.conf.js --cucumberOpts.tagExpression='@positive'",
-    "negative": "wdio run wdio.conf.js --cucumberOpts.tagExpression='@negativeLogin'",
-    "regression": "wdio run wdio.conf.js --cucumberOpts.tagExpression='@regression'"
+    "negativeLogin": "wdio run wdio.conf.js --cucumberOpts.tagExpression='@negativeLogin'",
+    "regression": "wdio run wdio.conf.js --cucumberOpts.tagExpression='@regression'", 
+    "tambahSasaran": "wdio run wdio.conf.js --cucumberOpts.tagExpression='@tambahSasaran'",
+    "pemeriksaanPosyandu": "wdio run wdio.conf.js --cucumberOpts.tagExpression='@pemeriksaanIbuHamil'"
   },
   "keywords": [],
   "author": "",

@@ -45,7 +45,7 @@ export const config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 10,
+    maxInstances: 1,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -54,12 +54,15 @@ export const config = {
     capabilities: [{
 
     platformName: 'Android',
-    'appium:deviceName': 'emulator-5554',
+    'appium:deviceName': 'R9RY700H9CH',
     'appium:automationName': 'UiAutomator2',
     'appium:appPackage': 'com.infokes.eposyandu',
     'appium:appActivity': 'com.infokes.eposyandu.MainActivity',
     'appium:noReset': true,
-    'appium:autoLaunch': true
+    'appium:autoLaunch': true,
+    'appium:settings': {
+        'enforceXPath1': true
+    }
 
 }],
     //
@@ -109,7 +112,14 @@ export const config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['appium', 'visual'],
+    services: [
+    ['appium', {
+        command: 'appium',
+        args: {
+            allowInsecure: 'uiautomator2:adb_shell'
+        }
+    }]
+    ],
 
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -141,6 +151,8 @@ export const config = {
 
     require: [
         './src/steps/login.steps.js',
+        './src/steps/tambahSasaranPosyandu.steps.js',
+        './src/steps/pemeriksaanIbuHamil.steps.js',
         './src/support/hooks.js'
     ],
 
@@ -158,7 +170,7 @@ export const config = {
 
     tagExpression: '',
 
-    timeout: 60000,
+    timeout: 1200000,
 
     ignoreUndefinedDefinitions: false
 

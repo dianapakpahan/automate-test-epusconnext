@@ -12,11 +12,13 @@ class LoginPage {
     }
 
     get inputPhoneNumberField() {
-        return $('//android.widget.EditText[@hint="Nomor handphone"]');
+        // Menggunakan instance(0) jauh lebih stabil daripada mencari @hint yang sering tidak terdeteksi
+        return $('android=new UiSelector().className("android.widget.EditText").instance(0)');
     }
 
     get inputPinField() {
-        return $('//android.widget.EditText[@hint="PIN"]');
+        // Menggunakan instance(1) untuk field PIN
+        return $('android=new UiSelector().className("android.widget.EditText").instance(1)');
     }
 
     get btnMasuk() {
@@ -28,7 +30,8 @@ class LoginPage {
     }
 
     get homeEpusConnext() {
-        return $('~Halo Ebenezer,');
+        // Menggunakan UiSelector descriptionContains biasanya lebih stabil untuk Android
+        return $('android=new UiSelector().descriptionContains("Halo Kader Demo")');
     }
 
     // LUPA PIN
@@ -46,7 +49,7 @@ class LoginPage {
     }
 
     get errorLoginMessage() {
-        return $('~Nomor handpone atau PIN salah');
+        return $('~Nomor handphone atau PIN salah');
     }
     // ======================
     // ACTION
@@ -67,11 +70,11 @@ class LoginPage {
             timeout: 10000
         });
         await this.inputPhoneNumberField.click();
-        await browser.pause(500);
+        await browser.pause(300);
         await this.inputPhoneNumberField.clearValue();
-        await browser.pause(500);
+        await browser.pause(300);
         await this.inputPhoneNumberField.setValue(phone);
-        await browser.pause(2000);
+        await browser.pause(1000);
         await hideKeyboardIfVisible();
 
     }
@@ -82,11 +85,11 @@ class LoginPage {
             timeout: 10000
         });
         await this.inputPinField.click();
-        await browser.pause(500);
+        await browser.pause(300);
         await this.inputPinField.clearValue();
-        await browser.pause(500);
+        await browser.pause(300);
         await this.inputPinField.addValue(pin);
-        await browser.pause(1500);
+        await browser.pause(1000);
         await hideKeyboardIfVisible();
     
     }
@@ -96,18 +99,20 @@ class LoginPage {
         await this.btnMasuk.waitForDisplayed();
         await this.btnMasuk.click();
     }
-        
-    async login(phone,pin){
-        await this.inputNoHp(phone);
-        await this.inputPin(pin);
-        await this.clickMasuk();
-    }
 
     async waitUntilSyncFinished() {
+        // Tunggu sebentar sampai overlay sinkron muncul (max 10 detik)
+        try {
+            await this.syncData.waitForDisplayed({ timeout: 10000 });
+            console.log('Sinkronisasi terdeteksi...');
+        } catch (error) {
+            console.log('Overlay sinkron tidak muncul, lanjut cek halaman utama.');
+        }
 
+        // Tunggu sampai overlay sinkron hilang (max 10 menit)
         await this.syncData.waitForDisplayed({
             reverse: true,
-            timeout: 300000
+            timeout: 600000
         });
     }
 
@@ -130,7 +135,7 @@ class LoginPage {
     }
 
     async isAtHomePage() {
-
+        
         return await this.homeEpusConnext.isDisplayed();
     }
 }

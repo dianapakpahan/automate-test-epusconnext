@@ -1,6 +1,6 @@
 export const validUser = {
-    phone: '081311223311',
-    pin: '112233'
+    phone: '08112243032',
+    pin: '654321'
 };
 
 export const invalidUsers = [

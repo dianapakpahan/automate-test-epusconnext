@@ -1,0 +1,13 @@
+@regression
+@ubahPIN-valid
+
+Feature: Ubah PIN ePus Connext
+
+  Scenario: Mengubah PIN User
+    Given User berada di halaman utama ePus Connext
+    And User masuk ke halaman profile
+    And User berada di Halaman profile
+    And User masuk ke ubah PIN
+    And User input PIN Lama yang valid
+    And User input PIN Baru yang valid
+    Then PIN akun user berhasil diubah
